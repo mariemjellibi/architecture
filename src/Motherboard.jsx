@@ -11,22 +11,31 @@
 // }
 
 // export default Motherboard;
-import { useGLTF } from '@react-three/drei';
 
-function Motherboard() {
-  const { scene, error } = useGLTF('/motherboard.gltf');  // The model path
 
-  // Handle loading error
-  if (error) {
-    console.error("Error loading model:", error);
-    return <div>Failed to load model</div>;
-  }
 
-  // Optional: Adjust scale and position if needed
-  scene.scale.set(0.5, 0.5, 0.5);  // Scale down the model if it's too big
-  scene.position.set(0, 0, 0);     // Make sure the model is centered
 
-  return <primitive object={scene} />;
-}
+// import { useGLTF } from '@react-three/drei';
+// import { useEffect } from 'react';
 
-export default Motherboard;
+// function Motherboard() {
+//   const { scene } = useGLTF('/motherboard.gltf');
+
+
+
+//   useEffect(() => {
+//     if (error) {
+//       console.error("Model load error:", error);
+//     }
+//   }, [error]);
+
+//   if (error) {
+//     return <div>Failed to load model</div>;
+//   }
+
+//   scene.scale.set(0.5, 0.5, 0.5);
+//   scene.position.set(0, 0, 0);
+
+//   return <primitive object={scene} />;
+// }
+// export default Motherboard;
