@@ -13,29 +13,30 @@
 // export default Motherboard;
 
 
+import { useGLTF } from '@react-three/drei';
+import { useEffect, useState } from 'react';
 
+function Motherboard() {
+  const { scene, error } = useGLTF('/motherboard.gltf');
+  const [loadingError, setLoadingError] = useState(null);
 
-// import { useGLTF } from '@react-three/drei';
-// import { useEffect } from 'react';
+  useEffect(() => {
+    if (error) {
+      setLoadingError("Failed to load model");
+      console.error("Model load error:", error);
+    }
+  }, [error]);
 
-// function Motherboard() {
-//   const { scene } = useGLTF('/motherboard.gltf');
+  if (loadingError) {
+    return <div>{loadingError}</div>;
+  }
 
+  if (scene) {
+    scene.scale.set(0.5, 0.5, 0.5);
+    scene.position.set(0, 0, 0);
+  }
 
+  return <primitive object={scene} />;
+}
 
-//   useEffect(() => {
-//     if (error) {
-//       console.error("Model load error:", error);
-//     }
-//   }, [error]);
-
-//   if (error) {
-//     return <div>Failed to load model</div>;
-//   }
-
-//   scene.scale.set(0.5, 0.5, 0.5);
-//   scene.position.set(0, 0, 0);
-
-//   return <primitive object={scene} />;
-// }
-// export default Motherboard;
+export default Motherboard;
